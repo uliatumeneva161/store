@@ -16,7 +16,8 @@ import Footer from './components/Footer'
 import { FavoritesProvider } from './context/FavoritesContext'
 function App() {
   return (
-    <AuthProvider>
+    <div className='center'>
+          <AuthProvider>
       <AdminProvider>
         <CartProvider>
           <FavoritesProvider>
@@ -45,6 +46,8 @@ function App() {
         </CartProvider>
       </AdminProvider>
     </AuthProvider>
+    </div>
+
   )
 }
 
