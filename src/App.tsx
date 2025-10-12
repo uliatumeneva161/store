@@ -12,8 +12,10 @@ import ProfilePage from './pages/ProfilePage'
 import AdminPage from './pages/admin/AdminPage'
 import FavoritesPage from './pages/FavoritesPage'
 import Footer from './components/Footer'
-
 import { FavoritesProvider } from './context/FavoritesContext'
+import Categors from './components/Categors'
+import NotFound from './pages/NotFound'
+
 function App() {
   return (
     <div className='center'>
@@ -24,19 +26,24 @@ function App() {
             <Router>
               <div className="min-h-screen bg-light text-dark">
                 <Header />
-                <main className="pb-8">
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/products" element={<ProductsPage />} />
-                    <Route path="/product/:id" element={<ProductPage />} />
-                    <Route path="/checkout" element={<CheckoutPage />} />
-                    <Route path="/order-success/:orderId" element={<OrderSuccessPage />} />
-                    <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/admin" element={<AdminPage />} />
-                    <Route path="/favorites" element={<FavoritesPage />} />
-                    <Route path="/auth" element={<ProfilePage />} />
-                  </Routes>
+                  <main className="flex-1 flex flex-col">
 
+                  <div className="flex-1 flex flex-col">
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/products" element={<ProductsPage />} />
+                      <Route path="/product/:id" element={<ProductPage />} />
+                      <Route path="/checkout" element={<CheckoutPage />} />
+                      <Route path="/order-success/:orderId" element={<OrderSuccessPage />} />
+                      <Route path="/profile" element={<ProfilePage />} />
+                      <Route path="/admin" element={<AdminPage />} />
+                      <Route path="/favorites" element={<FavoritesPage />} />
+                      <Route path="/auth" element={<ProfilePage />} />
+                      <Route path="/categories" element={<Categors />} />
+                        
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </div>
 
                 </main>
                 <Footer/>

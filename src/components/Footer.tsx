@@ -1,45 +1,7 @@
-{/* <footer className="bg-gray-light border-gray-medium border-t mt-auto">
-                  <div className="container mx-auto px-4 py-8">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                      <div>
-                        <h3 className="font-semibold text-lg mb-4 text-dark">SamReshung</h3>
-                        <p className="text-gray-dark">
-                          Лучшие товары по доступным ценам с быстрой доставкой.
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-semibold mb-4 text-dark">Категории</h4>
-                        <ul className="space-y-2 text-gray-dark">
-                          <li><a href="/products?category=Телефоны" className="hover:text-dark">Телефоны</a></li>
-                          <li><a href="/products?category=Наушники" className="hover:text-dark">Наушники</a></li>
-                          <li><a href="/products?category=Мониторы" className="hover:text-dark">Мониторы</a></li>
-                          <li><a href="/products?category=Карты памяти" className="hover:text-dark">Карты памяти</a></li>
-                          <li><a href="/products?category=Ноутбуки" className="hover:text-dark">Ноутбуки</a></li>
-                          <li><a href="/products?category=Аксессуары" className="hover:text-dark">Аксессуары</a></li>
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-semibold mb-4 text-dark">Контакты</h4>
-                        <div className="text-gray-dark space-y-2">
-                          <p>+7 (999) 999 99 99</p>
-                          <p>sam-reshung@shop.ru</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="border-t border-gray-medium mt-8 pt-8 text-center text-gray-dark">
-                      <p>&copy; 2025 SamReshung</p>
-                    </div>
-                  </div>
-                </footer> */}
-
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-// Выносим данные в константы для переиспользования
+
 export const FOOTER_CATEGORIES = [
   { name: 'Телефоны', path: '/products?category=Телефоны' },
   { name: 'Наушники', path: '/products?category=Наушники' },

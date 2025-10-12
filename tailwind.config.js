@@ -140,16 +140,16 @@ export default {
         'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       },
       colors: { 
-        'light': '#0f172a',           // Тёмный фон
-        'main': '#818cf8',            // Лавандовый акцент
+        'light': '#0f172a',           // фон
+        'main': '#818cf8',            
         'dark': '#e2e8f0',            // Светлый текст
         'accent': '#a78bfa',          // Дополнительный акцент
-        'success': '#34d399',         // Успех
-        'warning': '#fbbf24',         // Предупреждение
-        'error': '#fca5a5',           // Ошибка
-        'gray-light': '#1e293b',      // Светло-серый (для карточек)
-        'gray-medium': '#334155',     // Средне-серый
-        'gray-dark': '#94a3b8'        // Тёмно-серый
+        'success': '#34d399',         
+        'warning': '#fbbf24',         
+        'error': '#fca5a5',           
+        'gray-light': '#1e293b',      
+        'gray-medium': '#334155',    
+        'gray-dark': '#94a3b8'        
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135deg, #818cf8 0%, #a78bfa 100%)',

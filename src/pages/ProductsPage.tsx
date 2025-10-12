@@ -53,12 +53,11 @@ const applyCategoryFilters = (product: Product) => {
   // Фильтр по наличию
   if (categoryFilters.inStock && product.stock <= 0) return false
 
-  // Фильтр по брендам (множественный выбор)
+  // Фильтр по брендам
   if (categoryFilters.brands && categoryFilters.brands.length > 0) {
     if (!categoryFilters.brands.includes(product.brand)) return false
   }
 
-  // Остальные фильтры
   for (const [key, value] of Object.entries(categoryFilters)) {
     if (!value || value === '' || key === 'minPrice' || key === 'maxPrice' || key === 'inStock' || key === 'brands') continue
     
@@ -91,10 +90,8 @@ const applyCategoryFilters = (product: Product) => {
       filtered = filtered.filter(product => product.category === category)
     }
 
-    // Применяем расширенные фильтры для категории
     filtered = filtered.filter(applyCategoryFilters)
 
-    // Сортировка
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'price_asc':
