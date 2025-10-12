@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { useAuth } from './AuthContext'
 
 interface AdminContextType {
@@ -9,7 +9,7 @@ interface AdminContextType {
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined)
 
-export const AdminProvider = ({ children }: { children: any }) => {
+export const AdminProvider = ({ children }: { children: React.ReactNode }) => {
   const { user } = useAuth()
   
   const [adminUsers] = useState(() => {
@@ -18,8 +18,8 @@ export const AdminProvider = ({ children }: { children: any }) => {
   
   return adminEmails
       .split(',')
-      .map(email => email.trim().toLowerCase())
-      .filter(email => email.includes('@'));
+      .map((email:string) => email.trim().toLowerCase())
+      .filter((email:string) => email.includes('@'));
 
 });
 

@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import type { User } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
 
 interface AuthProviderProps {
-  children: any
+  children: React.ReactNode  
 }
 
 interface AuthContextType {
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     getSession()
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null)
       setLoading(false)
     })
@@ -44,13 +44,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     return () => subscription.unsubscribe()
   }, [])
 
-  const confirmUser = async (email: string) => {
-   
-      const { data: adminClient } = await supabase.auth.admin.updateUserById(
+  const confirmUser = async (_email: string) => {
+    try {
+      const { data: _adminClient } = await supabase.auth.admin.updateUserById(
         user?.id || '',
         { email_confirm: true }
       )
-   
+    } catch (error) {
+      console.error('Error confirming user:', error)
+    }
   }
 
   const signIn = async (email: string, password: string) => {
@@ -62,14 +64,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     })
     
     if (error) {
-      if (error.message.includes('Email not confirmed')) {
-        
-        // Пробуем зарегистрироваться снова с авто-подтверждением
+      if (error.message.includes('Email не подтвержден')) {
         await signUp(cleanEmail, password, 'AutoConfirmUser')
         return
       }
       
-      throw new Error(`Ошибка входа: ${error.message}`)
+      throw new Error('Неверный логин или пароль')
     }
     
     setUser(data.user)
@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     })
     
     if (error) {
-      if (error.message.includes('already registered')) {
+      if (error.message.includes('Вы уже зарегистрированы')) {
         await signIn(cleanEmail, password)
         return
       }
@@ -98,11 +98,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       throw new Error(`Ошибка регистрации: ${error.message}`)
     }
     
-    
     if (data.user) {
       try {
         await signIn(cleanEmail, password)
-      } catch (loginError) {
+      } catch (_loginError) {
         setUser(data.user)
       }
     }
@@ -133,7 +132,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider')
+    throw new Error('ошибка') 
   }
   return context
 }

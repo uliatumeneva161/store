@@ -4,7 +4,6 @@ import type { Order } from '../types'
 export const emailService = {
   async sendOrderConfirmation(order: Order, userEmail: string) {
     try {
-      // Используем Supabase Edge Functions для отправки email
       const { data, error } = await supabase.functions.invoke('send-email', {
         body: {
           to: userEmail,
@@ -13,7 +12,7 @@ export const emailService = {
           data: {
             orderNumber: order.id.slice(-8),
             orderDate: new Date(order.created_at).toLocaleDateString('ru-RU'),
-            customerName: order.customer_info?.firstName || 'Клиент',
+            customerName: order.email?.split('@')[0] || 'Клиент',
             items: order.items,
             subtotal: order.total,
             shipping: order.total > 5000 ? 0 : 300,

@@ -84,14 +84,13 @@ const ProductPage: React.FC = () => {
   const getAvailableColors = (): ColorOption[] => {
     if (!product?.color) return []
     
-    const colorImages = product.specifications?.color_images || {}
     const colorNames = product.color.includes(',') 
       ? product.color.split(',').map(c => c.trim()).filter(c => c)
       : [product.color]
     
     return colorNames.map(colorName => ({
       name: colorName,
-      image: colorImages[colorName],
+      // image: colorImages[colorName],
       hex: getColorValue(colorName)
     }))
   }

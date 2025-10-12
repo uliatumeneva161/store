@@ -302,7 +302,7 @@ const AdminPage: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Десктопная версия */}
+                      {/* Десктопная*/}
                       <div className="hidden lg:block">
                         <div className="flex justify-between items-start mb-4">
                           <div className="flex-1">

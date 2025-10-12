@@ -156,7 +156,7 @@ const Header: React.FC = () => {
         isAdmin={isAdmin}
         onSignOut={handleSignOut}
         totalFavorites={getTotalFavorites()}
-        navigationItems={NAVIGATION_ITEMS}
+        navigationItems={[...NAVIGATION_ITEMS]}
         brandName={BRAND_NAME}
         onOpenAuth={() => setIsAuthOpen(true)}
       />

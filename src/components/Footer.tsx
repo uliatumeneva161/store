@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
 export const FOOTER_CATEGORIES = [
   { name: 'Телефоны', path: '/products?category=Телефоны' },
   { name: 'Наушники', path: '/products?category=Наушники' },
@@ -19,7 +18,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4 text-dark">SamReshung</h3>
             <p className="text-gray-dark">
-              Лучшие товары по доступным ценам с быстрой доставкой.
+              Лучшие товары по доступным ценам
             </p>
           </div>
           

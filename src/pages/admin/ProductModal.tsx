@@ -28,7 +28,6 @@ const ProductModal: React.FC<ProductModalProps> = ({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   
-  // ✅ Состояние формы - все поля из базы данных
   const [formData, setFormData] = useState({
     name: '',
     price: '',
@@ -73,7 +72,7 @@ useEffect(() => {
       storage: product.storage || '',
       memory: product.memory || '',
       processor: product.processor || '',
-      cores: product.cores || '',
+      cores: product.cores?.toString()  || '',
       frequency: product.frequency || '',
       cache: product.cache || '',
       speed_class: product.speed_class || '',

@@ -35,12 +35,6 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({
     return [...new Set(values)].sort()
   }
 
-  const getUniqueNumbers = (field: keyof Product) => {
-    return [...new Set(products
-      .map(p => p[field])
-      .filter((value): value is number => typeof value === 'number')
-    )].sort((a, b) => a - b)
-  }
 
   const getFilterCount = (field: keyof Product, value: any) => {
     return products.filter(product => {
@@ -145,9 +139,7 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({
           </div>
         </div>
         
-        <div className="text-xs text-gray-dark text-center">
-          Диапазон: {minPrice.toLocaleString()}₽ – {maxPrice.toLocaleString()}₽
-        </div>
+        
       </Card>
     )
   }
@@ -186,7 +178,7 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({
                     onChange={(e) => {
                       const newBrands = e.target.checked
                         ? [...selectedBrands, brand]
-                        : selectedBrands.filter(b => b !== brand)
+                        : selectedBrands.filter((b: string) => b !== brand)
                       handleFilterChange('brands', newBrands.length > 0 ? newBrands : '')
                     }}
                     className="rounded border-gray-medium text-main focus:ring-main w-4 h-4"
@@ -280,7 +272,6 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({
       
       <Card className="p-4 space-y-4">
         {renderSelectFilter('color', 'Цвет', 'Любой цвет')}
-        {renderSelectFilter('type', 'Тип', 'Любой тип')}
       </Card>
     </div>
   )
@@ -321,7 +312,6 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({
       
       <Card className="p-4 space-y-4">
         {renderSelectFilter('color', 'Цвет', 'Любой цвет')}
-        {renderSelectFilter('type', 'Тип', 'Любой тип')}
       </Card>
     </div>
   )
@@ -469,7 +459,7 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({
                   key={key}
                   className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-main text-dark"
                 >
-                  {displayKey}: {displayValue}
+                  {String(displayKey)}: {String(displayValue)}
                   <button
                     onClick={() => clearFilter(key)}
                     className="ml-2 hover:text-accent text-lg transition-colors duration-200"

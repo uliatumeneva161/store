@@ -119,7 +119,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    placeholder="your-email@example.com"
+                    placeholder="Введите email"
                     autoComplete="username" 
                     className="w-full px-3 py-2 border border-gray-medium rounded-md focus:outline-none focus:ring-2 focus:ring-main bg-gray-light text-dark placeholder-gray-dark"
                   />
